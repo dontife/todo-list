@@ -16,6 +16,7 @@ function App() {
     });
     setToDoList(mapped);
   }
+  // delete completed tasks
   const handleFilter = () => {
     let filtered = toDoList.filter(task => {
       return !task.complete;
