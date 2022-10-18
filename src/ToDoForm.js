@@ -1,17 +1,25 @@
-const [ userInput, setUserInput ] = useState('');
-<input value={userInput} type="text" onChange={handleChange} placeholder="Enter task..."/>
-const handleChange = (e) => {
-    setUserInput(e.currentTarget.value)
-}
-const handleSubmit = (e) => {
-    e.preventDefault();
-    addTask(userInput);
-    setUserInput(“”);
+import React, {useState}  from 'react';
 
-}
+const Form = ({addTask}) => {
+    const [ userInput, setUserInput ] = useState('');
 
-const addTask = (userInput) => {
-    let copy = [...toDoList];
-    copy = [...copy, { id: toDoList.length + 1, task: userInput, complete: false }];
-    setToDoList(copy);
-  }
+    const handleChange = (e) => {
+        setUserInput(e.currentTarget.value)
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        addTask(userInput);
+        setUserInput("");
+    }
+    return (
+        <form onSubmit={handleSubmit}>
+            <input value={userInput} type="text" onChange={handleChange} placeholder="Enter task..."/>
+            <button>Submit</button>
+        </form>
+    );
+    
+};
+
+export default Form
+
